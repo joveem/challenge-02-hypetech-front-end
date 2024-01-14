@@ -1,0 +1,7 @@
+.resizable-controller {
+    /* height: 200px;
+    width: 200px; */
+    position: relative;
+    overflow: hidden;
+    background: #515;
+}

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preload" href="./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-idle-border.png" as="image">
+    <link rel="preload" href="./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-pressed-border.png" as="image">
+
+    <link rel="stylesheet" href="./showcase.css">
+
+    <link rel="shortcut icon" href="#" />
+    <script src="./showcase.js"></script>
+</head>
+
+
+<body>
+
+
+    <!-- ##################################### -->
+
+    <div class="resizable-controller default-button-size">
+
+        <div class="bet-button-01 bet-button-01-container">
+
+            <div class="bet-button-01-content-idle-container">
+                <span class="content-title content-title-01">APOSTAR</span>
+                <br>
+                <span class="content-title content-title-02">R$ 1.00</span>
+                <!-- <p class="content-title content-title-01">APOSTAR</p>
+                    <p class="content-title content-title-02">R$ 1.00</p> -->
+            </div>
+
+            <div class="bet-button-01-idle-container">
+                <!-- <div class="bet-button-01-idle-center"></div> -->
+                <img class="bet-button-01-idle-center"
+                    src="./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-idle-center.png" alt="">
+                <button class="bet-button-01-idle-border"></button>
+                <div class="click-area click-area-button-01"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="resizable-controller default-button-size">
+
+        <div class="bet-button-01 bet-button-01-container">
+
+            <div class="bet-button-01-content-idle-container">
+                <span class="content-title content-title-01">APOSTAR</span>
+                <br>
+                <span class="content-title content-title-02">R$ 1.00</span>
+                <!-- <p class="content-title content-title-01">APOSTAR</p>
+                    <p class="content-title content-title-02">R$ 1.00</p> -->
+            </div>
+
+            <div class="bet-button-01-idle-container">
+                <!-- <div class="bet-button-01-idle-center"></div> -->
+                <img class="bet-button-01-idle-center"
+                    src="./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-idle-center.png" alt="">
+                <button class="bet-button-01-idle-border"></button>
+                <div class="click-area click-area-button-01"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ##################################### -->
+
+    <!-- <div id="container">
+                <div id="top-panel"> This is the top side's content! </div>
+                <div id="bottom-panel">
+                    <div id="drag"></div>
+            bottom content!
+        </div>
+    </div> -->
+
+    <!-- <div>Block1</div>
+    <div>Block2</div> -->
+
+
+    <script>
+
+    </script>
+
+
+    <!-- ##################################### -->
+
+
+    <style>
+        .default-button-size {
+            height: 110px;
+            width: 170px;
+        }
+
+        .bet-button-01-container {
+            /* height: 110px;
+            width: 176px; */
+            height: 100%;
+            width: 100%;
+
+            position: relative;
+        }
+
+        .bet-button-01-idle-container {
+            height: 100%;
+            width: 100%;
+
+            position: relative;
+        }
+
+        .bet-button-01-idle-border {
+            height: 100%;
+            width: 100%;
+
+            position: absolute;
+
+            border-width: 30px 30px 42px 30px;
+            border-image: url(./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-idle-border.png);
+
+            filter: hue-rotate(150deg) brightness(160%);
+
+            background-color: transparent;
+            /* fill: green; */
+            /* background-image: url(./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-idle-border.png); */
+            /* padding: 40px; */
+
+            border-image-slice: 30 30 42 30;
+            border-image-repeat: stretch;
+        }
+
+        .bet-button-01-pressed-border {
+            border-width: 42px 30px 30px 30px;
+            border-image: url(./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-pressed-border.png);
+
+            border-image-slice: 42 30 30 30;
+        }
+
+        .bet-button-01-idle-center {
+            height: calc(100% - 30px - 42px);
+            width: calc(100% - 30px - 30px);
+
+            position: absolute;
+
+            filter: hue-rotate(150deg) brightness(160%);
+
+            /* opacity: 0.5; */
+
+            padding: 30px 30px 42px 30px;
+        }
+
+        .bet-button-01-pressed-center {
+            padding: 42px 30px 30px 30px;
+        }
+
+        .bet-button-01-content-idle-container {
+            z-index: 100;
+
+            height: calc(100% - 30px - 42px);
+            width: calc(100% - 30px - 30px);
+
+            position: absolute;
+
+            /* opacity: 0.5; */
+
+            /* background-color: green; */
+
+            padding: 30px 30px 42px 30px;
+            margin: 0;
+
+            justify-content: center;
+            align-content: center;
+            text-align: center;
+
+            text-align: center;
+            vertical-align: middle;
+
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bet-button-01-content-pressed-container {
+            padding: 42px 30px 30px 30px;
+        }
+
+        .bet-button-01-content-idle-container>.content-title {
+            /* height: 100%; */
+            /* width: calc(100% - 20px); */
+            width: inherit;
+
+            /* top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); */
+
+            /* line-height: 1.5;
+            display: inline-block;
+            vertical-align: middle; */
+
+            /* margin: 0; */
+            /* margin: 0;
+            position: relative; */
+            /* top: 50%;
+            left: 50%; */
+            /* transform: translate(-50%, -50%); */
+
+            color: white;
+            /* text-align: center; */
+
+            /* flex: 0 0 120px; */
+
+            /* text-align: center; */
+        }
+
+
+        /* .bet-button-01 {
+            height: 110px;
+            width: 170px;
+
+            border-width: 30px 30px 42px 40px;
+            border-image: url(./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-idle-border.png);
+
+            background-color: transparent;
+            fill: green;
+            background-image: url(./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-idle-border.png);
+            padding: 40px;
+
+            border-image-slice: 30 30 42 40;
+            border-image-repeat: stretch;
+        } */
+
+        .click-area {
+            z-index: 200;
+
+            height: 100%;
+            width: 100%;
+
+            /* background-color: rgba(0, 255, 0, 0.5); */
+            background-color: rgba(0, 255, 0, 0);
+
+            position: absolute;
+        }
+
+    </style>
+
+    <script>
+        // const widthSlider = document.getElementById("width");
+        // const sliceSlider = document.getElementById("slice");
+        // const widthOutput = document.getElementById("width-output");
+        // const sliceOutput = document.getElementById("slice-output");
+        // const divElem = document.querySelector("div > div");
+
+        // widthSlider.addEventListener("input", () =>
+        // {
+        //     const newValue = `${widthSlider.value}px`;
+        //     divElem.style.borderWidth = newValue;
+        //     widthOutput.textContent = newValue;
+        // });
+
+        // sliceSlider.addEventListener("input", () =>
+        // {
+        //     const newValue = sliceSlider.value;
+        //     divElem.style.borderImageSlice = newValue;
+        //     sliceOutput.textContent = newValue;
+        // });
+
+        console.log("document.getElementsByClassName(\"click-area-button-01\") = ")
+        console.log(document.getElementsByClassName("click-area-button-01")[0]);
+
+        let button01Trigger = document.getElementsByClassName("click-area-button-01")[0];
+        // button01Trigger.onclick = () => Button01();
+        button01Trigger.onmousedown = () => Button01();
+        button01Trigger.onmouseup = () => Button01();
+
+        let isPressed = false;
+
+        function Button01()
+        {
+            // window.alert("Button01");
+            let button01Border = document.getElementsByClassName("bet-button-01-idle-border")[0];
+            let button01Center = document.getElementsByClassName("bet-button-01-idle-center")[0];
+            let button01Container = document.getElementsByClassName("bet-button-01-content-idle-container")[0];
+
+            if (!isPressed)
+            {
+                button01Border.classList.add("bet-button-01-pressed-border");
+                button01Center.classList.add("bet-button-01-pressed-center");
+                button01Container.classList.add("bet-button-01-content-pressed-container");
+            } else
+            {
+                button01Border.classList.remove("bet-button-01-pressed-border");
+                button01Center.classList.remove("bet-button-01-pressed-center");
+                button01Container.classList.remove("bet-button-01-content-pressed-container");
+            }
+
+            isPressed = !isPressed;
+        }
+    </script>
+
+    <!-- ADDITIONAL FEATURE -->
+    <!-- resizable-controller -->
+    <link rel="stylesheet" href="./features/resizable-controller/style/resizable-controller.css">
+    <script src="./features/resizable-controller/scripts/resizable-controller.js"></script>
+</body>
+
+</html>
