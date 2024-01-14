@@ -15,6 +15,9 @@ import { TransactionStatus } from '@/core/providers/enums/transaction'
 import { TransactionMode } from '@/core/providers/enums/transaction'
 import { MAX_AMOUNT, MIN_AMOUNT } from '@/core/constants'
 
+import * as GameButton from "./../../../../../public/showcase-01/features/game-button/game-button.js"
+import "./../../../../../public/showcase-01/features/game-button/game-button.css"
+
 type Props = {
   secondEnabled?: boolean
   toggleSecond?: Function
@@ -79,8 +82,10 @@ export default function CrashForm({
   const transaction = transactions[position]
 
   useEffect(() => {
+    GameButton.ResetState()
     updateAmount(formatBRLCurrency(1.0))
     updateExitValue(formatBRLCurrency(100.0))
+    GameButton.ResetState()
   }, [])
 
   function submitTransaction(e) {
@@ -146,6 +151,8 @@ export default function CrashForm({
     { key: TransactionMode.COMMON, title: 'Normal' },
     { key: TransactionMode.AUTO, title: 'Auto' },
   ]
+
+  GameButton.ResetState()
 
   return (
     <div className="bg-black border border-gray-600 bg-opacity-20 border-opacity-20 crash-form w-full h-45 md:w-1/2 flex rounded-md p-3 relative">
@@ -272,20 +279,29 @@ export default function CrashForm({
                 transaction?.status == TransactionStatus.UNREGISTERED
               }
             >
-              <button
-                className={`btn border-2 hover:border-gray-300 text-[22px] hover:text-[24px] rounded-[20px] border-gray-400 ${getBackgroundColor(
-                  color
-                )} flex flex-col px-0 text-white h-full w-full`}
-              >
-                <span className="text-sm font-normal text-white">
-                  {transaction.mode == TransactionMode.COMMON
-                    ? 'Apostar'
-                    : 'Aposta Auto'}
-                </span>
-                <span className="mt-[3px] font-normal text-shadow-sm">
-                  R$ {transaction.amount}
-                </span>
-              </button>
+              <div className="game-button">
+                <button
+                  className="main-button"
+                  onMouseDown={GameButton.HandleMouseUpEvent}
+                ></button>
+
+                <div className="content-container">
+                  <span className="title title-01 text-sm font-normal text-white text-sm">
+                    {transaction.mode == TransactionMode.COMMON
+                      ? "Apostar"
+                      : "Aposta Auto"}
+                  </span>
+                  <br />
+                  <span className="title title-02 mt-[3px] font-normal text-shadow-sm">
+                    {" "}
+                    {"R$ " + transaction.amount}
+                  </span>
+                </div>
+
+                <button className="border-sprite sprite-color-light-green"></button>
+
+                <img className="center-sprite sprite-color-light-green" />
+              </div>
             </If>
 
             <If
@@ -294,24 +310,35 @@ export default function CrashForm({
                 transaction?.status == TransactionStatus.REGISTERED
               }
             >
-              <button
-                className={`btn border-2 text-[22px] hover:text-[24px] flex flex-col px-0 text-white h-full w-full bg-red-700 rounded-[20px] hover:bg-red-800 border-[#ffffff40] hover:border-gray-400 `}
-                onClick={() => cancelTransaction(position)}
-              >
-                <If condition={transaction.autoStarted}>
-                  <span className="text-sm">
-                    Cancelar ({transaction.roundCount + 1})
+              <div className="game-button">
+                <button
+                  className="main-button"
+                  onClick={() => cancelTransaction(position)}
+                  onMouseDown={GameButton.HandleMouseUpEvent}
+                ></button>
+
+                <div className="content-container">
+                  <If condition={transaction.autoStarted}>
+                    <span className="title title-01 text-sm">
+                      Cancelar ({transaction.roundCount + 1})
+                    </span>
+                  </If>
+
+                  <If condition={!transaction.autoStarted}>
+                    <span className="title title-01 text-sm">
+                      Cancelar
+                    </span>
+                  </If>
+                  <br />
+                  <span className="title title-02 mt-[3px] font-normal text-shadow-sm">
+                    {"R$ " + transaction.amount}
                   </span>
-                </If>
+                </div>
 
-                <If condition={!transaction.autoStarted}>
-                  <span className="text-sm">Cancelar</span>
-                </If>
+                <button className="border-sprite sprite-color-light-red"></button>
 
-                <span className="text-xl font-semibold">
-                  R$ {transaction.amount}
-                </span>
-              </button>
+                <img className="center-sprite sprite-color-light-red" />
+              </div>
             </If>
 
             <If
@@ -320,21 +347,22 @@ export default function CrashForm({
                 transaction?.status == TransactionStatus.PENDING
               }
             >
-              <div className="flex flex-col w-full h-full">
+              <div className="game-button">
                 <button
-                  className={`btn border-2 text-[22px] hover:text-[24px] bg-red-700 rounded-[20px] hover:bg-red-800 border-[#ffffff40] flex flex-col px-0 text-white h-full w-full`}
+                  className="main-button"
                   onClick={cancelFuterTransaction}
-                >
-                  <If condition={transaction.autoStarted}>
-                    <span className="text-sm">
-                      Cancelar ({transaction.roundCount})
-                    </span>
-                  </If>
+                  onMouseDown={GameButton.HandleMouseUpEvent}
+                ></button>
 
-                  <If condition={!transaction.autoStarted}>
-                    <span className="text-xl">Cancelar</span>
-                  </If>
-                </button>
+                <div className="content-container">
+                  <span className="title title-01 text-xl text-large">
+                    Cancelar
+                  </span>
+                </div>
+
+                <button className="border-sprite sprite-color-light-red"></button>
+
+                <img className="center-sprite sprite-color-light-red" />
               </div>
             </If>
 
@@ -344,23 +372,35 @@ export default function CrashForm({
                 transaction?.status == TransactionStatus.REGISTERED
               }
             >
-              <button
-                className={`btn border-2 text-[22px] hover:text-[24px] bg-[#ff7700] rounded-[20px] hover:bg-[#d26200] border-[#ffffff40] flex flex-col px-0 text-white h-full w-full`}
-                onClick={() => cashOut(position)}
-              >
-                <If condition={transaction.autoStarted}>
-                  <span className="text-sm">
-                    Retirar ({transaction.roundCount + 1})
-                  </span>
-                </If>
+              <div className="game-button">
+                <button
+                  className="main-button"
+                  onClick={() => cashOut(position)}
+                  onMouseDown={GameButton.HandleMouseUpEvent}
+                ></button>
 
-                <If condition={!transaction.autoStarted}>
-                  <span className="text-sm">Retirar</span>
-                </If>
-                <span className="text-xl font-semibold">
-                  R$ {(transaction.amount * multiplier).toFixed(2)}
-                </span>
-              </button>
+                <div className="content-container">
+                  <If condition={transaction.autoStarted}>
+                    <span className="title title-01 text-sm">
+                      Retirar ({transaction.roundCount + 1})
+                    </span>
+                  </If>
+
+                  <If condition={!transaction.autoStarted}>
+                    <span className="title title-01 text-sm">
+                      Retirar
+                    </span>
+                  </If>
+                  <br />
+                  <span className="title title-02 mt-[3px] font-normal text-shadow-sm">
+                    {"R$ " + transaction.amount}
+                  </span>
+                </div>
+
+                <button className="border-sprite sprite-color-light-orange"></button>
+
+                <img className="center-sprite sprite-color-light-orange" />
+              </div>
             </If>
           </div>
         </section>

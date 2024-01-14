@@ -51,7 +51,8 @@ function HomePage() {
                   <iframe
                     ref={iframeRef}
                     className="rounded-md overflow-hidden w-full h-full pointer-events-none min-h-[250px] sm:min-h-[300px]"
-                    src="/motograu/index.html"
+                    // src="/motograu/index.html"
+                    src="/motograu-02/motograu-02.html"
                   ></iframe>
                   <div className="transform sm:translate-y-[-390px] translate-y-[-200px]">
                     <Display color={'pink'} />
