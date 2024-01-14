@@ -2,8 +2,9 @@
 <html>
 
 <head>
-    <link rel="preload" href="./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-idle-border.png" as="image">
-    <link rel="preload" href="./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-pressed-border.png" as="image">
+    <link rel="preload" href="./../motograu/src/assets/sprites/UI/cb-fec-01-buttons-01-01-idle-border.png" as="image">
+    <link rel="preload" href="./../motograu/src/assets/sprites/UI/cb-fec-01-buttons-01-01-pressed-border.png"
+        as="image">
 
     <link rel="stylesheet" href="./showcase.css">
 
@@ -18,28 +19,87 @@
     <!-- ##################################### -->
 
     <div class="resizable-controller default-button-size">
+        <button class="test-button-001" style="height: 100%; width: 100%;">test-01</button>
+    </div>
 
-        <div class="bet-button-01 bet-button-01-container">
 
-            <div class="bet-button-01-content-idle-container">
-                <span class="content-title content-title-01">APOSTAR</span>
+
+    <script>
+        let button001Trigger = document.getElementsByClassName("test-button-001")[0];
+        button001Trigger.onclick = () => Button001OnClick();
+
+        function Button001OnClick()
+        {
+            console.log("button001Trigger Button001OnClick!");
+        }
+    </script>
+
+    <!-- ! ################################## -->
+
+    <div class="resizable-controller default-button-size">
+
+        <div class="game-button">
+
+            <button class="main-button"></button>
+
+            <div class="content-container">
+                <span class="title title-01">APOSTAR</span>
                 <br>
-                <span class="content-title content-title-02">R$ 1.00</span>
-                <!-- <p class="content-title content-title-01">APOSTAR</p>
-                    <p class="content-title content-title-02">R$ 1.00</p> -->
+                <span class="title title-02">R$ 1.00</span>
             </div>
 
-            <div class="bet-button-01-idle-container">
-                <!-- <div class="bet-button-01-idle-center"></div> -->
-                <img class="bet-button-01-idle-center"
-                    src="./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-idle-center.png" alt="">
-                <button class="bet-button-01-idle-border"></button>
-                <div class="click-area click-area-button-01"></div>
-            </div>
+            <button class="border-sprite"></button>
+            <!-- <div class="sprite-border"></div> -->
+            <img class="center-sprite">
 
         </div>
 
     </div>
+
+    <div class="resizable-controller default-button-size">
+
+        <div class="game-button">
+
+            <button class="main-button"></button>
+
+            <div class="content-container">
+                <span class="title title-01">APOSTAR</span>
+                <br>
+                <span class="title title-02">R$ 1.00</span>
+            </div>
+
+            <button class="border-sprite"></button>
+            <!-- <div class="sprite-border"></div> -->
+            <img class="center-sprite">
+
+        </div>
+
+    </div>
+
+    <div class="resizable-controller default-button-size">
+
+        <div class="game-button">
+
+            <button class="main-button"></button>
+
+            <div class="content-container">
+                <span class="title title-01">APOSTAR</span>
+                <br>
+                <span class="title title-02">R$ 1.00</span>
+            </div>
+
+            <button class="border-sprite"></button>
+            <!-- <div class="sprite-border"></div> -->
+            <img class="center-sprite">
+
+        </div>
+
+    </div>
+
+    <script type="module" src="./features/game-button/game-button.js"></script>
+    <link rel="stylesheet" href="./features/game-button/game-button.css">
+
+    <!-- ! ################################## -->
 
     <div class="resizable-controller default-button-size">
 
@@ -56,7 +116,7 @@
             <div class="bet-button-01-idle-container">
                 <!-- <div class="bet-button-01-idle-center"></div> -->
                 <img class="bet-button-01-idle-center"
-                    src="./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-idle-center.png" alt="">
+                    src="./../motograu/src/assets/sprites/UI/cb-fec-01-buttons-01-01-idle-center.png" alt="">
                 <button class="bet-button-01-idle-border"></button>
                 <div class="click-area click-area-button-01"></div>
             </div>
@@ -116,13 +176,13 @@
             position: absolute;
 
             border-width: 30px 30px 42px 30px;
-            border-image: url(./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-idle-border.png);
+            border-image: url(./../motograu/src/assets/sprites/UI/cb-fec-01-buttons-01-01-idle-border.png);
 
             filter: hue-rotate(150deg) brightness(160%);
 
             background-color: transparent;
             /* fill: green; */
-            /* background-image: url(./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-idle-border.png); */
+            /* background-image: url(./../motograu/src/assets/sprites/UI/cb-fec-01-buttons-01-01-idle-border.png); */
             /* padding: 40px; */
 
             border-image-slice: 30 30 42 30;
@@ -131,7 +191,7 @@
 
         .bet-button-01-pressed-border {
             border-width: 42px 30px 30px 30px;
-            border-image: url(./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-pressed-border.png);
+            border-image: url(./../motograu/src/assets/sprites/UI/cb-fec-01-buttons-01-01-pressed-border.png);
 
             border-image-slice: 42 30 30 30;
         }
@@ -218,11 +278,11 @@
             width: 170px;
 
             border-width: 30px 30px 42px 40px;
-            border-image: url(./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-idle-border.png);
+            border-image: url(./../motograu/src/assets/sprites/UI/cb-fec-01-buttons-01-01-idle-border.png);
 
             background-color: transparent;
             fill: green;
-            background-image: url(./../motograu/assets/sprites/ui/cb-fec-01-buttons-01-01-idle-border.png);
+            background-image: url(./../motograu/src/assets/sprites/UI/cb-fec-01-buttons-01-01-idle-border.png);
             padding: 40px;
 
             border-image-slice: 30 30 42 40;
