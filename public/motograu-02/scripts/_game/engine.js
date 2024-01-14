@@ -974,8 +974,6 @@ class MotoGrauUIScene extends BaseGameScene
         // this.hasToReset = false;
         // this.resetFadeFactor = 0;
 
-        console.log("############### ui ResetScene");
-
         this.currentVelocityFactor = 1;
         this.hasStartedAcceleration = false;
         this.hasStartedDesceleration = false;
@@ -1061,7 +1059,7 @@ class MotoGrauUIScene extends BaseGameScene
                 velocimeterTextPositionX - 5,
                 velocimeterTextPositionY - 5 + (textSize / 2),
                 'atari-smooth',
-                '0.00x',
+                '1.00x',
                 textSize);
 
         let velocimeterMultiplierTextShadow =
@@ -1069,7 +1067,7 @@ class MotoGrauUIScene extends BaseGameScene
                 velocimeterTextPositionX,
                 velocimeterTextPositionY + (textSize / 2),
                 'atari-smooth',
-                '0.00x',
+                '1.00x',
                 textSize);
 
         velocimeterMultiplierText.setText();
@@ -1567,7 +1565,7 @@ function OnCrash(event)
 
 function OnTestWheelie(event)
 {
-    console.log("#> TestWheelie");
+    // console.log("#> TestWheelie");
 
     let gameScene = game.scene.getAt(0);
     gameScene.TestWheelie();

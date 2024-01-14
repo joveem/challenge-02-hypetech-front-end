@@ -3,7 +3,7 @@ let firstRun = true;
 
 const executeAction = (eventName, detail) =>
 {
-    console.log("eventName = " + eventName);
+    // console.log("eventName = " + eventName);
 
     var game01Frame = document.getElementById("game-01-frame");
     var game02Frame = document.getElementById("game-02-frame");
@@ -52,6 +52,31 @@ async function DefaultLoop15SButton()
     DefaultLoop(15);
 }
 
+async function AccelerationLoop0SButton()
+{
+    AccelerationLoop(0);
+}
+
+async function AccelerationLoop1SButton()
+{
+    AccelerationLoop(1);
+}
+
+async function AccelerationLoop2SButton()
+{
+    AccelerationLoop(2);
+}
+
+async function AccelerationLoop5SButton()
+{
+    AccelerationLoop(5);
+}
+
+async function AccelerationLoop15SButton()
+{
+    AccelerationLoop(15);
+}
+
 async function TestWheelie500ms()
 {
     executeAction('test-wheelie', { durationInMs: 500 })
@@ -60,17 +85,35 @@ async function TestWheelie500ms()
 
 async function DefaultLoop(durationSeconds)
 {
-    let timeout = 2;
+    let startCountDown = 10;
     let multiplier = 1;
     let timeElapsed = 0;
+    let stepsSize = 0.01;
+
+    while (startCountDown > 0)
+    {
+        await Delay(stepsSize);
+        startCountDown -= stepsSize;
+        startCountDown -= stepsSize;
+        UpdateStartCountDown(startCountDown.toFixed(0));
+    }
+
+    await AccelerationLoop(durationSeconds);
+}
+
+async function AccelerationLoop(durationSeconds)
+{
+    let multiplier = 1;
+    let timeElapsed = 0;
+    let stepsSize = 0.01;
 
     UpdateMultiplier(1, 1);
 
     while (timeElapsed < durationSeconds)
     {
-        await Delay(1);
-        timeElapsed += 1;
-        multiplier += 1;
+        await Delay(stepsSize);
+        timeElapsed += stepsSize;
+        multiplier += stepsSize;
         UpdateMultiplier(multiplier, multiplier);
     }
 
@@ -82,6 +125,11 @@ async function Delay(waitSeconds)
     await new Promise(resolve => setTimeout(resolve, waitSeconds * 1000));
 }
 
+
+function UpdateStartCountDown(timeOut)
+{
+    executeAction('counterTime', { timeOut: timeOut })
+}
 
 function UpdateMultiplier(multiplier, interval)
 {
