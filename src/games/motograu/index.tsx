@@ -55,7 +55,7 @@ function HomePage() {
                     src="/motograu-02/motograu-02.html"
                   ></iframe>
                   <div className="transform sm:translate-y-[-390px] translate-y-[-200px]">
-                    <Display color={'pink'} />
+                    {/* <Display color={'pink'} /> */}
                   </div>
                 </div>
 
