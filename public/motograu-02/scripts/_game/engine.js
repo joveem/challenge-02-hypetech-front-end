@@ -16,7 +16,8 @@ class BaseGameScene extends Phaser.Scene
     {
         let value = -1;
 
-        value = 0 - baseObject.width;
+        if (baseObject != null)
+            value = 0 - baseObject.width;
 
         return value;
     }
@@ -25,7 +26,10 @@ class BaseGameScene extends Phaser.Scene
     {
         let value = -1;
 
-        value = this.game.canvas.width + baseObject.width;
+        value = this.game.canvas.width;
+
+        if (baseObject != null)
+            value += baseObject.width;
 
         return value;
     }
@@ -967,6 +971,8 @@ class MotoGrauUIScene extends BaseGameScene
         this.moveCameraToRight = true;
         this.moveCameraDeltaFactor = 0;
         this.currentStartCountdownValue = 10;
+
+        this.hasStartedDesceleration = false;
     }
 
     ResetScene()
@@ -983,6 +989,8 @@ class MotoGrauUIScene extends BaseGameScene
         this.currentStartCountdownValue = 10;
 
         this.HideVelocemeter();
+
+        this.IsInitialized = true;
     }
 
     preload()
@@ -1284,6 +1292,9 @@ class MotoGrauUIScene extends BaseGameScene
 
     ApplyMultiplierText(multiplierValue)
     {
+        if (multiplierValue == null || multiplierValue < 1)
+            multiplierValue = 1;
+
         let textValue = multiplierValue.toFixed(2) + "x";
 
         if (this.velocimeterMultiplierText01 !== undefined)
@@ -1527,8 +1538,11 @@ function OnStart(event)
     let gameScene = game.scene.getAt(0);
     let uiScene = game.scene.getScene("game-ui-scene")
 
-    gameScene.DoStartAcceleration();
-    uiScene.DoStartAcceleration();
+
+    if (gameScene != null)
+        gameScene.DoStartAcceleration();
+    if (uiScene != null && uiScene.IsInitialized)
+        uiScene.DoStartAcceleration();
 }
 
 function OnStartCountDownUpdate(event)
@@ -1537,7 +1551,7 @@ function OnStartCountDownUpdate(event)
     // console.log(event.detail);
 
     let uiScene = game.scene.getScene("game-ui-scene");
-    if (uiScene != null)
+    if (uiScene != null && uiScene.IsInitialized)
         uiScene.SetStartCountdownValue(event.detail.timeOut);
 }
 
@@ -1547,7 +1561,7 @@ function OnUpdateMultiplier(event)
     // console.log(event.detail);
 
     let uiScene = game.scene.getScene("game-ui-scene");
-    if (uiScene != null)
+    if (uiScene != null && uiScene.IsInitialized)
         uiScene.SetMultiplierValue(event.detail.multi);
 }
 
