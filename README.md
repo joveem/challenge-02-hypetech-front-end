@@ -16,7 +16,7 @@
 
 UI/UX Test is an awnser to a knowledge test about Front-End web development with React, TypeScript, JavaScript and CSS based on the bet game "Moto-Grau"
 
-You can read the Requirements Document (pt-br) [here]([documentation/documents/requirements-pt-br.jpg](https://github.com/hypetechgames/frontend-challenge))
+You can read the Requirements Document (pt-br) [here](https://github.com/hypetechgames/frontend-challenge)
 
 <img src="documentation/readme/gifs/hypetech-moto-grau-01.gif">
 
