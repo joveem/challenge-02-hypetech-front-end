@@ -42,6 +42,7 @@ export function ResetState()
         }
 
         mainButton.onmousedown = () => OnButtonHoldDown(gameButtonObject);
+        mainButton.ontouchstart = () => OnButtonHoldDown(gameButtonObject);
         gameButtonsById[gameButtonRandomId] = gameButtonObject;
 
         // SetLightRedColorToButton(gameButtonRandomId);
@@ -55,7 +56,8 @@ export function ResetState()
 
 function UnpressAllButtons()
 {
-    OnButtonHoldUp
+    Object.keys(gameButtonsById).map(
+        (gameButtonObject) => OnButtonHoldUp(gameButtonsById));
 }
 
 export function HandleMouseUpEvent(event)
@@ -107,9 +109,12 @@ function ApplyPressedSpriteToButton(gameButtonObject)
 {
     if (gameButtonObject != null)
     {
-        gameButtonObject.ContentContainer.classList.add("content-container-pressed");
-        gameButtonObject.BorderSprite.classList.add("border-sprite-pressed");
-        gameButtonObject.CenterSprite.classList.add("center-sprite-pressed");
+        if (gameButtonObject.ContentContainer != null)
+            gameButtonObject.ContentContainer.classList.add("content-container-pressed");
+        if (gameButtonObject.BorderSprite != null)
+            gameButtonObject.BorderSprite.classList.add("border-sprite-pressed");
+        if (gameButtonObject.CenterSprite != null)
+            gameButtonObject.CenterSprite.classList.add("center-sprite-pressed");
     }
 }
 
@@ -123,9 +128,12 @@ function ApplyUnpressedSpriteToButton(gameButtonObject)
 {
     if (gameButtonObject != null)
     {
-        gameButtonObject.ContentContainer.classList.remove("content-container-pressed");
-        gameButtonObject.BorderSprite.classList.remove("border-sprite-pressed");
-        gameButtonObject.CenterSprite.classList.remove("center-sprite-pressed");
+        if (gameButtonObject.ContentContainer != null)
+            gameButtonObject.ContentContainer.classList.remove("content-container-pressed");
+        if (gameButtonObject.BorderSprite != null)
+            gameButtonObject.BorderSprite.classList.remove("border-sprite-pressed");
+        if (gameButtonObject.CenterSprite != null)
+            gameButtonObject.CenterSprite.classList.remove("center-sprite-pressed");
     }
 }
 
@@ -186,6 +194,8 @@ function RemoveAllColors(baseElement)
 
 // region Events
 window.addEventListener('mouseup', OnMouseUp, false);
+window.addEventListener('touchend', OnMouseUp, false);
+window.addEventListener('touchcancel', OnMouseUp, false);
 
 
 ResetState();
