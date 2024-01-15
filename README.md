@@ -1,4 +1,4 @@
-#  Unity Multiplayer Test
+#  Front-End UI/UX Test
 
 <img src="documentation/readme/screenshots/scr-01-moto-grau-01.png">
 
@@ -14,7 +14,7 @@
 
 ## About the project
 
-UI/UX Test is an awnser to a knowledge test about Front-End web development with React, TypeScript, JavaScript and CSS based on the bet game "Moto-Grau"
+Front-End UI/UX Test is an awnser to a knowledge test about Front-End web development with React, TypeScript, JavaScript and CSS based on the bet game "Moto-Grau"
 
 You can read the Requirements Document (pt-br) [here](https://github.com/hypetechgames/frontend-challenge)
 
