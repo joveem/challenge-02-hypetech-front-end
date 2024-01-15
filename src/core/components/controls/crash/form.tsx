@@ -405,6 +405,7 @@ export default function CrashForm({
           </div>
         </section>
       </form>
+      <img className='preload-01' />
     </div>
   )
 }
