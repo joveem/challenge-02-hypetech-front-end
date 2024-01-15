@@ -1,145 +1,136 @@
+#  Unity Multiplayer Test
+
+<img src="documentation/readme/screenshots/scr-01-moto-grau-01.png">
+
+---
+## Summary:
+
+- [About the project](#about-the-project)
+- [Getting started](#getting-started)
+    - [Cloning the repository](#cloning-the-repository)
+    - [Testing](#testing)
+
+---
+
+## About the project
+
+UI/UX Test is an awnser to a knowledge test about Front-End web development with React, TypeScript, JavaScript and CSS based on the bet game "Moto-Grau"
+
+You can read the Requirements Document (pt-br) [here]([documentation/documents/requirements-pt-br.jpg](https://github.com/hypetechgames/frontend-challenge))
+
+<img src="documentation/readme/gifs/hypetech-moto-grau-01.gif">
+
+The base project contains a Phaser game within a webpage. The webpage incorporates various features related to the game state and its controllers.
+
+The challenge objective is to use creativity to enhance the UX of the base project in any way.
+
+The base project has several areas for improvement regarding the "game feel." I aimed to enhance the UX by aligning the webpage more closely with that feel and improving its game feedback.
+
+The game code on the webpage was minified. Consequently, I recreated the game using Phaser 3 to have full control over the game cycle. I then implemented smoother feedback for all interactions in the game.
+
+I also introduced new content into the game, which was initially on the webpage, such as the "multiplier counter," "start countdown," and "driver fell warning." This allowed me to enhance its feedback in a more gamified manner. Subsequently, I removed the original content from the webpage.
+
+At this point, there was no longer sufficient time to modify the UI of the webpage safely. However, I had already invested time in a change I considered essential for the website to align with the game's experience. This involved transforming the main "bet/withdraw" button into one that resembled a game, sinking when held, along with its content, the text "bet/withdraw." While seemingly a simple task, it proved to be a significant challenge. It needed to be TRULY REUSABLE, modular, and testable in isolation, separate from the main project logic and business rules. Additionally, it had to be usable by a component as if it were a traditional "button" element.
+
+<img src="documentation/readme/gifs/hypetech-moto-grau-02.gif">
+
+I isolated the "Game-Button" and the new game "Moto-Grau" so that they could be tested independently in what I refer to as a "Showcase Scene." This provides a way to test features in isolation without relying on the rest of the project, similar to unit testing for aspects that cannot be tested conventionally (typically, visual elements).
 
 
-# Introdução
+---
 
-<img src="https://hypetech.games/assets/images/branding/dark.png" alt="Hypetech" width="350"/>
+### Getting Started:
 
-Seja bem-vindo ao Desafio Prático de Frontend Hypetech.
+##### Cloning the repository:
 
-Com um catálogo de 15 jogos, distribuídos atualmente para mais de 250 plataformas e meio milhão de jogadores, a Hypetech é uma produtora e provedora de jogos internacional de Jogos Gambling Justos, com foco em criar jogos para o público LATAM.
-
-Todos os nossos jogos são jogos [Provably Fair](https://provablyfair.org/), promovendo uma experiência de jogo justa, confiável e transparente aos jogadores.
-
-Neste desafio prático o seu objetivo será atuar de forma livre na interface de dois jogos da Hypetech.
-
-Selecionamos dois jogos para este desafio: **Motograu** e **WallStreet**. Ambos são jogos que vão entrar no mercado em Janeiro, e escolheremos a melhor interface de cada um para ser a interface oficial do jogo.
-
-Além disso, o objetivo do desafio é selecionar e premiar os melhores frontends avaliados neste desafio.
+To open the project in development mode, you need to have an environment configured with [Yarn](https://yarnpkg.com/getting-started/install)
 
 
-## Sobre o Motograu
-
-Com uma temática divertida e voltada ao público brasileiro, o **Motograu** é um jogo de categoria Crash, onde objetivo do jogador é **apostar no Motoqueiro e retirar sua aposta antes que o Cachorro Caramelo o derrube**.
-
-Caso a aposta seja encerrada pelo jogador antes do Motoqueiro ser derrubado, o valor apostado é pago multiplicado pelo multiplicador do momento do cashout.
-
-As rodadas são automáticas e os resultados são transmitidos ao vivo aos jogadores, fornecendo a todos os jogadores as mesmas probabilidades imparciais ao mesmo tempo, 24 horas por dia, 7 dias por semana.
-
-![UI MotoGrau](https://i.ibb.co/42BnW3g/MotoGrau.png)
-
-
-
-## Sobre o WallStreet
-	
-O Wallstreet é um jogo de predição de tendência, inspirado na plataforma IQ Option. O Objetivo é "adivinhar" qual será a próxima tendência do mercado: subir, descer, ou manter (Bull).
-
-Caso o jogador acerte as tendências de Subida ou Descida, seu prêmio é o valor apostado 2x. Caso acerte a tendência Bull, seu prêmio é o valor apostado 20x.
-
-![UI WallStreet](https://i.ibb.co/yPCK0mG/Wall-Street.png)
-
-
-## Orientações
-
-**Essa sessão traz orientações-base para a execução do desafio:**
-
-1. Criamos **interfaces funcionais de exemplo** para o **Motograu** e **WallStreet**. Nesta interface estão inclusos todos os componentes e funcionalidades básicas e obrigatórias. **Inicie seu desenvolvimento a partir dela**.
-2. As animações de ambos os jogos são compiladas, portanto, elas não devem ser alteradas, apenas os elementos de UI.
-3. Não modifique os componentes globais (core), eles servem apenas como base.
-4. Você é livre para criar novos componentes que gerem valor. **Exemplo:** 
-	- Contagem de players online;
-	- Chat visível;
-	- Notificações e animações visuais;
-	- Outras informações que possam ser interessante para o jogador;
-
-
-## Avaliação
-
-**Você será avaliado com base nos seguintes critérios:**
-
-- Abordagem técnica;
-- Qualidade e clareza do código;
-- Feeling, criatividade e qualidade na concepção da UI e UX;
-
-
-## Stacks
-- React
-- TailwindCss
-- Websocket
-
-## Plus
-Utilize uma biblioteca gráfica, como Apex Chart, para desenvolver um gráfico inspirado na IQ Option.
-
-
-
-# Instruções técnicas
-
-Este projeto contém a aplicação das interfaces dos jogos **WallStreet** e **Motograu**:
-
-### 1. Clone o repositório:
-```bash
-git clone https://github.com/hypetechgames/frontend-challenge
+``` 
+git clone https://github.com/joveem/challenge-02-hypetech-front-end.git
+cd challenge-02-hypetech-front-end
+yarn
+#
 ```
 
-### 2. Instale as dependências e inicie o projeto
+##### Installing dependencies:
 
-Acesse a pasta do projeto:
-```bash
-cd frontend-challenge
+(with NPM)
+
+``` 
+npm install
+```
+(with Yarn)
+
+``` 
+yarn
 ```
 
-Instale as dependências do projeto:
-```bash
-yarn install
-```
+##### Running:
 
-Inicie o projeto:
-```bash
+```
 yarn dev
 ```
 
-### 3. Obtendo um token de acesso ao jogo
+##### Paste ALL this code in a command line to clone and run the server at once:
 
-Para acessar o jogo é necessário obter um token de acesso que cria uma sessão demonstrativa funcional para desenvolvimento.
+``` 
+# Clone the repository:
+git clone https://github.com/joveem/challenge-02-hypetech-front-end.git
+# Directory changing
+cd challenge-02-hypetech-front-end
+# Install dependencies:
+yarn
+# Start Server:
+yarn dev
+#
+```
 
-Para obtê-lo:
+### Testing:
 
-**1 - Acesse a API de Demonstração:** 
- https://hypetech-demo-api-service-developer.up.railway.app/docs/
+To access the game, it is necessary to obtain an access token that creates a functional demo session for development
 
-**2 - Obtenha um link de demonstração:**	
+##### Obtendo um token de acesso ao jogo
 
+1 - Access the Demo API: https://hypetech-demo-api-service-developer.up.railway.app/docs/
+
+2 - Get a demo link:
+
+```json
 	{ "gameUrl": "https://hypetech-games-ui-developer.up.railway.app/44cdf4cec80508c531f71a1929d591c8" }
+```
 
-**3 - Extraia o token obtido:**
-~~https://hypetech-games-ui-developer.up.railway.app/~~**44cdf4cec80508c531f71a1929d591c8**
-
-
-Exemplo: https://i.ibb.co/fp07Mxs/Screen-Recording-2024-01-08-at-17-59-36.gif
+3 - Extract the obtained token: (in this example, was "44cdf4cec80508c531f71a1929d591c8)
 
 
-**Obs:** Para cada jogo que desejar carregar, você deve gerar um novo token, alterando o parâmetro "game" da requisição:
+
+**Note:** For each game you want to load, you must generate a new token, changing the "game" parameter of the request:
 
  ```json
-"game": "motograu",
-"lang": "pt",
-"currency": "BRL"
+ {
+	 "game": "motograu",
+		"lang": "pt",
+		"currency": "BRL"
+ }
 ```
 
  ```json
-"game": "wall-street",
-"lang": "pt",
-"currency": "BRL"
+ {
+	 "game": "wall-street",
+		"lang": "pt",
+		"currency": "BRL"
+ }
 ```
 
-**4 - Acesse o jogo:**
-Uma vez obtido o token, utilize-o no seu ambiente de desenvolvimento:
+4 - Access the game: once you have obtained the token, use it in your development environment:
 
-**Exemplo - URL do seu ambiente:** http://localhost:8000/
-**Exemplo - URL do jogo no seu ambiente:** http://localhost:8000/2b29acad3f7a1e6b0995155668719e66
+**Example - URL of your environment:** http://localhost:8000/
 
-Caso encontre dificuldade em obter o token seguindo processo acima, você poderá utilizar os tokens públicos abaixo *(ciente que outros desenvolvedores podem estar utilizando a mesma sessão ao mesmo tempo)*:
+**Example - URL of the game in your environment:** http://localhost:8000/2b29acad3f7a1e6b0995155668719e66
+
+If you encounter difficulty obtaining the token following the above process, you can use the public tokens below *(aware that other developers may be using the same session at the same time)*:
 
 **Motograu:** 44cdf4cec80508c531f71a1929d591c8
 **WallStreet:** 294f24f2c661fc80fd6d12845a3ccdd6
 
-Isso é tudo. A partir de agora você pode acessar o jogo e explorar todas as funcionalidades de forma completa durante seu desenvolvimento.
+---
