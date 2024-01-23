@@ -351,7 +351,7 @@ export default function BetPanel ({
       case 'apostar':
       case 'apostar-auto':
       case 'cancelar-not-running':
-        value = 'R$ ' + transaction.amount.replace('.', ',')
+        value = 'R$ ' + ('' + transaction.amount).replace('.', ',')
         break
 
       case 'cancelar-running':

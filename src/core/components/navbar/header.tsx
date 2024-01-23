@@ -118,7 +118,7 @@ export default function Header ({
 
               <div className='menu-button-container'>
                 <GameButton
-                  iconSrc='/motograu/src/assets/sprites/UI/icons/list-icon.png'
+                  iconSrc='/motograu/src/assets/sprites/UI/icons/menu-icon.png'
                   mainColor='wine'
                   onClickCallback={() => toggleDropdown()}
                 ></GameButton>

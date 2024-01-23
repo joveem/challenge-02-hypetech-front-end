@@ -34,6 +34,67 @@ function HomePage () {
 
   return (
     <div className='flex min-h-screen overflow-hidden bg-gradient-to-r motograu-game'>
+      <link
+        rel='preload'
+        as='image'
+        href='/motograu/src/assets/sprites/UI/icons/auto-bet-icon'
+      />
+      <link
+        rel='preload'
+        as='image'
+        href='/motograu/src/assets/sprites/UI/icons/auto-withdraw-icon.png'
+      />
+      <link
+        rel='preload'
+        as='image'
+        href='/motograu/src/assets/sprites/UI/icons/chat-icon.png'
+      />
+      <link
+        rel='preload'
+        as='image'
+        href='/motograu/src/assets/sprites/UI/icons/emoji-icon.png'
+      />
+      <link
+        rel='preload'
+        as='image'
+        href='/motograu/src/assets/sprites/UI/icons/history-icon.png'
+      />
+      <link
+        rel='preload'
+        as='image'
+        href='/motograu/src/assets/sprites/UI/icons/list-icon.png'
+      />
+      <link
+        rel='preload'
+        as='image'
+        href='/motograu/src/assets/sprites/UI/icons/menu-icon.png'
+      />
+      <link
+        rel='preload'
+        as='image'
+        href='/motograu/src/assets/sprites/UI/icons/pin-icon.png'
+      />
+      <link
+        rel='preload'
+        as='image'
+        href='/motograu/src/assets/sprites/UI/icons/send-icon.png'
+      />
+      <link
+        rel='preload'
+        as='image'
+        href='/motograu/src/assets/sprites/UI/icons/pin-icon.png'
+      />
+      <link
+        rel='preload'
+        as='image'
+        href='/motograu/src/assets/sprites/UI/icons/user-icon.png'
+      />
+      <link
+        rel='preload'
+        as='image'
+        href='/motograu/src/assets/sprites/UI/cb-fec-01-buttons-01-01-pressed-border.png'
+      />
+
       <div className='grow relative z-0'>
         <iframe
           ref={iframeRef}

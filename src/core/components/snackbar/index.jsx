@@ -30,7 +30,7 @@ export default function Snackbar()
 
   return (
     <div className="absolute h-auto w-full top-[50px] left-0 z-50 pointer-events-none flex justify-center mt-4">
-      <Transaction
+      {/* <Transaction
         key={0}
         {...{
           amount: 10,
@@ -38,7 +38,7 @@ export default function Snackbar()
           index: 0,
         }}
         index={0}
-      />
+      /> */}
 
       {notifications.map((notification, index) =>
       {

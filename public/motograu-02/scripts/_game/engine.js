@@ -1019,18 +1019,19 @@ class MotoGrauUIScene extends BaseGameScene
     InstantiateVelocemeter()
     {
         let screenMiddlePositionX = this.GetScreenMiddlePositionX();
-        let velocimeterPositionX = screenMiddlePositionX + 100;
-        let velocimeterPositionY = 100;
-        let velocimeterScale = 0.25;
+        let velocimeterPositionX = screenMiddlePositionX + 90;
+        let velocimeterPositionY = 80;
+        // let velocimeterScale = 0.25;
+        let velocimeterScale = 0.2;
         // let velocimeterBaseRotation = Math.PI * 0.15;
         let velocimeterBaseRotation = 0.4;
 
 
-        let velocemeterBackgroundSprite = this.add.sprite(velocimeterPositionX, velocimeterPositionY, this.spriteKeys.velocemeterBackgroundKey);
-        let velocemeterColorSprite = this.add.sprite(velocimeterPositionX, velocimeterPositionY, this.spriteKeys.velocemeterColorKey);
-        let velocemeterPointerSprite = this.add.sprite(velocimeterPositionX, velocimeterPositionY, this.spriteKeys.velocemeterPointerKey);
+        let velocemeterBackgroundSprite = this.add.sprite(velocimeterPositionX, velocimeterPositionY , this.spriteKeys.velocemeterBackgroundKey);
+        let velocemeterColorSprite = this.add.sprite(velocimeterPositionX, velocimeterPositionY , this.spriteKeys.velocemeterColorKey);
+        let velocemeterPointerSprite = this.add.sprite(velocimeterPositionX, velocimeterPositionY , this.spriteKeys.velocemeterPointerKey);
 
-        let velocemeterColorMaskSprite = this.add.bitmapMask(null, velocimeterPositionX, velocimeterPositionY, this.spriteKeys.velocemeterMaskKey);
+        let velocemeterColorMaskSprite = this.add.bitmapMask(null, velocimeterPositionX, velocimeterPositionY , this.spriteKeys.velocemeterMaskKey);
 
         velocemeterColorSprite.setMask(velocemeterColorMaskSprite);
 
@@ -1057,8 +1058,8 @@ class MotoGrauUIScene extends BaseGameScene
         // const text1 = this.add.bitmapText(0, 0, 'atari-smooth', 'Welcome!', 70);
         let textSize = 52;
 
-        let velocimeterTextPositionX = velocimeterPositionX - 55;
-        let velocimeterTextPositionY = velocimeterPositionY - 65;
+        let velocimeterTextPositionX = velocimeterPositionX - 45;
+        let velocimeterTextPositionY = velocimeterPositionY - 45;
         let textCharSpacing = -20;
 
 
@@ -1103,8 +1104,8 @@ class MotoGrauUIScene extends BaseGameScene
         velocemeterContainer.add(velocimeterMultiplierText);
 
         velocemeterContainer.add(velocemeterBackgroundSprite);
-        velocemeterContainer.add(velocemeterPointerSprite);
         velocemeterContainer.add(velocemeterColorSprite);
+        velocemeterContainer.add(velocemeterPointerSprite);
         // velocemeterContainer.add(velocemeterColorMaskSprite);
 
         // velocemeterPointerSprite.setActive(false);

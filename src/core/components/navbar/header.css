@@ -76,7 +76,9 @@
 
   background-color: #ffcc00aa;
   color: #000000cc;
-  font-size: 32px;
+  font-weight: bold;
+  font-size: 28px;
+  /* font-size: 32px; */
 }
 
 .header-nav-container .value-input-container .value-input:focus {
@@ -106,6 +108,8 @@
   /* color: #ffffff4d; */
   color: #00000080;
   transform: translate(0px, 8px);
+
+  font-weight: bold;
 }
 
 
