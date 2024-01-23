@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
-import BetList, { TransactionStatus } from '../lists/history'
+import BetList, { TransactionStatus } from '../../lists/history'
 import { CrashGameContext } from '@/core/providers/games/crash-game.provider'
-import Header from '../lists/history/header'
+import Header from '../../lists/history/header'
 
 export default function HistoryTab() {
   const { betsHistory, getBetsHistory } = useContext(CrashGameContext)

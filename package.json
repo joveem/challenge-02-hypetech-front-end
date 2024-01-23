@@ -24,6 +24,7 @@
     "match-sorter": "^6.3.1",
     "phaser": "^3.60.0",
     "react": "^18.2.0",
+    "react-animated-css": "^1.2.1",
     "react-currency-input-field": "^3.6.9",
     "react-dom": "^18.2.0",
     "react-emoji-picker": "^1.0.13",

@@ -33,7 +33,7 @@ export default function Navbar({
 
   const [animationEnabled, setAnimationEnabled] = useState(true)
   const [musicEnabled, setMusicEnabled] = useState(true)
-  const [audioContextAllowed, setAudioContextAllowed] = useState(true) //////////////////////////////////////
+  const [audioContextAllowed, setAudioContextAllowed] = useState(true)
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const dropdownRef = useRef(null)

@@ -209,7 +209,6 @@ export default function BetPanel ({
   let autoBetButtonColor = GetAutoBetButtonColor()
   let autoWithdrawButtonColor = GetAutoWithdrawButtonColor()
 
-
   let autoWithdrawInputText = GetAutoWithdrawInputText()
 
   // if()
@@ -327,12 +326,8 @@ export default function BetPanel ({
     switch (stateName) {
       case 'apostar':
       case 'apostar-auto':
-        // value = 'R$ ' + transaction.amount
-        break
-
       case 'cancelar-not-running':
       case 'cancelar-running':
-        // value = 'R$ ' + transaction.amount
         break
 
       case 'cancelar-running-idle':
@@ -355,12 +350,16 @@ export default function BetPanel ({
     switch (stateName) {
       case 'apostar':
       case 'apostar-auto':
-        value = 'R$ ' + transaction.amount
+      case 'cancelar-not-running':
+        value = 'R$ ' + transaction.amount.replace('.', ',')
         break
 
-      case 'cancelar-not-running':
       case 'cancelar-running':
-        value = 'R$ ' + transaction.amount
+        value =
+          'R$ ' +
+          (transaction.amount * multiplier)
+            .toFixed(2)
+            .replace('.', ',')
         break
 
       case 'cancelar-running-idle':
@@ -544,7 +543,9 @@ export default function BetPanel ({
         <div className='bet-button-section'>
           <GameButton
             contentTitle={mainButtonTitle}
-            contentTitleClass={'bet-button-title ' + mainButtonTitleClass}
+            contentTitleClass={
+              'bet-button-title ' + mainButtonTitleClass
+            }
             contentSubtitle={mainButtonSubtitle}
             contentSubtitleClass='bet-button-subtitle'
             mainColor={mainButtonColor}
@@ -629,9 +630,7 @@ export default function BetPanel ({
                 onChange={e =>
                   OnAutoWithdrawValueChanged(e.target.value)
                 }
-                onBlur={e =>
-                  OnAutoWithdrawValueBlur(e.target.value)
-                }
+                onBlur={e => OnAutoWithdrawValueBlur(e.target.value)}
               />
             </div>
           </div>

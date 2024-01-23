@@ -1,3 +1,6 @@
+import './chat.css'
+import ChatMessage from './chat-message'
+
 import React, { useContext, useState } from 'react'
 
 import If from '../conditions/if'
@@ -11,9 +14,73 @@ import { FaceSmileIcon } from '@heroicons/react/24/outline'
 import { CrashGameContext } from '@/core/providers/games/crash-game.provider'
 import { IGameMessage } from '../../providers/interfaces/game-message.interface'
 import { dateToHumanReadable } from '@/core/helpers/date'
+
 type Props = {
-  show: boolean
+  show?: boolean
 }
+
+let _localUserId = '9ajsd09jas'
+
+let _messagesList = [
+  {
+    SenderId: '89ashd8ha',
+    SenderName: 'Name Name 12345',
+    MessageContent: 'Message message message',
+  },
+  {
+    SenderId: '89ashd8ha',
+    SenderName: 'Name Name 12345',
+    MessageContent:
+      'Message message message message message message message message message message message message message message',
+  },
+  {
+    SenderId: _localUserId,
+    SenderName: 'Name Name 12345',
+    MessageContent: 'Message message message',
+  },
+  {
+    SenderId: _localUserId,
+    SenderName: 'Name Name 12345',
+    MessageContent:
+      'Message message message message message message message message message message message message message message',
+  },
+  {
+    SenderId: '89ashd8ha',
+    SenderName: 'Name Name 12345',
+    MessageContent:
+      'Message message message message message message message message message message message message message message',
+  },
+  {
+    SenderId: '89ashd8ha',
+    SenderName: 'Name Name 12345',
+    MessageContent:
+      'Message message message message message message message message message message message message message message',
+  },
+  {
+    SenderId: _localUserId,
+    SenderName: 'Name Name 12345',
+    MessageContent:
+      'Message message message message message message message message message message message message message message',
+  },
+  {
+    SenderId: '89ashd8ha',
+    SenderName: 'Name Name 12345',
+    MessageContent:
+      'Message message message message message message message message message message message message message message',
+  },
+  {
+    SenderId: '89ashd8ha',
+    SenderName: 'Name Name 12345',
+    MessageContent:
+      'Message message message message message message message message message message message message message message',
+  },
+  {
+    SenderId: '89ashd8ha',
+    SenderName: 'Name Name 12345',
+    MessageContent:
+      'Message message message message message message message message message message message message message message',
+  },
+]
 
 export const Chat = ({ show }: Props) => {
   const { messages, sendMessage, session } =
@@ -21,13 +88,13 @@ export const Chat = ({ show }: Props) => {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false)
   const [message, setMessage] = useState<string>('')
 
-  function onClick(emojiData: EmojiClickData, event: MouseEvent) {
+  function onClick (emojiData: EmojiClickData, event: MouseEvent) {
     event.stopPropagation()
     setMessage(message + ' ' + emojiData.emoji)
   }
 
-  function handleShowEmojiPicker(e: MouseEvent) {
-    e.stopPropagation()
+  function handleShowEmojiPicker (e: MouseEvent | null) {
+    if (e != null) e.stopPropagation()
 
     setShowEmojiPicker(!showEmojiPicker)
   }
@@ -42,59 +109,74 @@ export const Chat = ({ show }: Props) => {
     }
   }
 
-  const handleMessage = (e) => {
+  const handleMessage = e => {
     if (e.key && e.key.toUpperCase() == 'ENTER') attemptSendMessage()
     else setMessage(e.target.value)
   }
 
+  let showNewStyle = true
+
   return (
     <If condition={show}>
-      <div className="w-80 mt-0 py-2 mb-44 px-2 border-l border-gray-700 border-opacity-50 text-sm rounded-lg bg-black backdrop-blur-sm bg-opacity-30 chat-container absolute right-0 z-40  h-[50%] sm:h-[80%] md:h-[70%] lg:h-[60%]">
-        <div className="flex flex-col relative gap-3 h-full">
-          <div className="mb-12 p-2 flex-shrink-1 flex-grow basis-0  overflow-y-scroll scrollbar-w-0 scrollbar-track-gray-400 scrollbar-thumb-gray-600 scrollbar scrollbar-track-rounded scrollbar-thumb-rounded">
-            {messages.map((data: IGameMessage, idx: number) => {
-              return (
-                <>
-                  <If condition={data.userId == session.userId}>
-                    <div className="chat chat-end" key={idx}>
-                      <div className="chat-image avatar">
-                        <div className="w-5 rounded-full">
-                          <img src="https://www.fiscalti.com.br/wp-content/uploads/2021/02/default-user-image.png" />
-                        </div>
-                      </div>
+      <If condition={showNewStyle}>
+        <div className='chat-container'>
+          <h1 className='title'>Chat</h1>
 
-                      <div className="chat-bubble min-h-0">
-                        {data.message}
-                      </div>
-                      <div className="chat-footer text-xs opacity-50">
-                        {dateToHumanReadable(data.createdAt)}
-                      </div>
-                    </div>
-                  </If>
-
-                  <If condition={data.userId != session.userId}>
-                    <div className="chat chat-start" key={idx}>
-                      <div className="chat-image avatar">
-                        <div className="w-5 rounded-full">
-                          <img src="https://www.fiscalti.com.br/wp-content/uploads/2021/02/default-user-image.png" />
-                        </div>
-                      </div>
-                      <div className="chat-bubble min-h-0">
-                        {data.message}
-                      </div>
-                      <div className="chat-footer text-xs opacity-50">
-                        {dateToHumanReadable(data.createdAt)}
-                      </div>
-                    </div>
-                  </If>
-                </>
-              )
-            })}
+          <div className='messages-container'>
+            {/* {_messagesList.map((message, index) => (
+            <ChatMessage
+              LocalUserId={_localUserId}
+              Message={message}
+            />
+          ))} */}
+            {messages.map((data: IGameMessage, idx: number) => (
+              <ChatMessage
+                LocalUserId={session.userId}
+                Message={{
+                  SenderId: '' + data.userId,
+                  SenderName: '' + data.userId,
+                  MessageContent: data.message,
+                }}
+              />
+            ))}
           </div>
 
-          <div className="sticky  bottom-2">
+          <div className='message-input-container'>
+            <button
+              className='input-button emoji-button'
+              onClick={() => handleShowEmojiPicker(null)}
+            >
+              <img
+                className='emoji-button-icon'
+                src='/motograu/src/assets/sprites/UI/icons/emoji-icon.png'
+                alt=''
+              />
+            </button>
+
+            <input
+              className='message-input'
+              type='text'
+              placeholder='Enter search text...'
+              value={message}
+              onChange={handleMessage}
+              onKeyDown={handleMessage}
+            ></input>
+
+            <button
+              className='input-button send-button'
+              onClick={attemptSendMessage}
+            >
+              <img
+                className='send-button-icon'
+                src='/motograu/src/assets/sprites/UI/icons/send-icon.png'
+                alt=''
+              />
+            </button>
+          </div>
+
+          <div className='sticky'>
             <If condition={showEmojiPicker}>
-              <div className="absolute bottom-10 w-full">
+              <div className='emoji-picker-container absolute bottom-0 w-full'>
                 <EmojiPicker
                   onEmojiClick={onClick}
                   autoFocusSearch={false}
@@ -137,32 +219,125 @@ export const Chat = ({ show }: Props) => {
                 />
               </div>
             </If>
-            <div className="form-control">
-              <div className="input-group">
-                <button
-                  className="btn btn-sm"
-                  onClick={(e) => handleShowEmojiPicker(e)}
-                >
-                  <FaceSmileIcon className="w-4 h-4" />
-                </button>
-                <input
-                  className="input input-sm w-full"
-                  value={message}
-                  onChange={handleMessage}
-                  onKeyDown={handleMessage}
-                />
+          </div>
+        </div>
+      </If>
+      <If condition={!showNewStyle}>
+        <div className='w-80 mt-0 py-2 mb-44 px-2 border-l border-gray-700 border-opacity-50 text-sm rounded-lg bg-black backdrop-blur-sm bg-opacity-30 chat-container absolute right-0 z-40  h-[50%] sm:h-[80%] md:h-[70%] lg:h-[60%]'>
+          <div className='flex flex-col relative gap-3 h-full'>
+            <div className='mb-12 p-2 flex-shrink-1 flex-grow basis-0  overflow-y-scroll scrollbar-w-0 scrollbar-track-gray-400 scrollbar-thumb-gray-600 scrollbar scrollbar-track-rounded scrollbar-thumb-rounded'>
+              {messages.map((data: IGameMessage, idx: number) => {
+                return (
+                  <>
+                    <If condition={data.userId == session.userId}>
+                      <div className='chat chat-end' key={idx}>
+                        <div className='chat-image avatar'>
+                          <div className='w-5 rounded-full'>
+                            <img src='https://www.fiscalti.com.br/wp-content/uploads/2021/02/default-user-image.png' />
+                          </div>
+                        </div>
 
-                <button
-                  className="btn btn-sm capitalize"
-                  onClick={attemptSendMessage}
-                >
-                  Enviar
-                </button>
+                        <div className='chat-bubble min-h-0'>
+                          {data.message}
+                        </div>
+                        <div className='chat-footer text-xs opacity-50'>
+                          {dateToHumanReadable(data.createdAt)}
+                        </div>
+                      </div>
+                    </If>
+
+                    <If condition={data.userId != session.userId}>
+                      <div className='chat chat-start' key={idx}>
+                        <div className='chat-image avatar'>
+                          <div className='w-5 rounded-full'>
+                            <img src='https://www.fiscalti.com.br/wp-content/uploads/2021/02/default-user-image.png' />
+                          </div>
+                        </div>
+                        <div className='chat-bubble min-h-0'>
+                          {data.message}
+                        </div>
+                        <div className='chat-footer text-xs opacity-50'>
+                          {dateToHumanReadable(data.createdAt)}
+                        </div>
+                      </div>
+                    </If>
+                  </>
+                )
+              })}
+            </div>
+
+            <div className='sticky  bottom-2'>
+              <If condition={showEmojiPicker}>
+                <div className='absolute bottom-10 w-full'>
+                  <EmojiPicker
+                    onEmojiClick={onClick}
+                    autoFocusSearch={false}
+                    height={'300px'}
+                    width={'100%'}
+                    previewConfig={{
+                      showPreview: false,
+                    }}
+                    theme={Theme.DARK}
+                    searchDisabled
+                    // skinTonePickerLocation={SkinTonePickerLocation.PREVIEW}
+                    // height={350}
+                    // width="50%"
+                    // emojiVersion="0.6"
+                    // lazyLoadEmojis={true}
+                    // previewConfig={{
+                    //   defaultCaption: 'Pick one!',
+                    //   defaultEmoji: '1f92a', // 🤪
+                    // }}
+                    // suggestedEmojisMode={SuggestionMode.RECENT}
+                    skinTonesDisabled
+                    // searchPlaceHolder="Filter"
+                    // defaultSkinTone={SkinTones.MEDIUM}
+                    // emojiStyle={EmojiStyle.NATIVE}
+                    categories={[
+                      {
+                        name: 'Smiles & Emotions',
+                        category: Categories.SMILEYS_PEOPLE,
+                      },
+                      {
+                        name: 'Fun and Games',
+                        category: Categories.ACTIVITIES,
+                      },
+
+                      {
+                        name: 'Flags',
+                        category: Categories.FLAGS,
+                      },
+                    ]}
+                  />
+                </div>
+              </If>
+              <div className='form-control'>
+                <div className='input-group'>
+                  <button
+                    className='btn btn-sm'
+                    onClick={e => handleShowEmojiPicker(e)}
+                  >
+                    <FaceSmileIcon className='w-4 h-4' />
+                  </button>
+                  <input
+                    className='input input-sm w-full'
+                    value={message}
+                    onChange={handleMessage}
+                    onKeyDown={handleMessage}
+                  />
+
+                  <button
+                    className='btn btn-sm capitalize'
+                    onClick={attemptSendMessage}
+                  >
+                    Enviar
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </If>
     </If>
   )
 }

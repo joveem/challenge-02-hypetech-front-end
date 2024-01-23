@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import BetList from '../lists/bets'
+import BetList from '../../lists/bets'
 import { UserIcon } from '@heroicons/react/24/outline'
 
 import { CrashGameContext } from '@/core/providers/games/crash-game.provider'
-import Header from '../lists/bets/header'
+import Header from '../../lists/bets/header'
 
 export default function BetsTab() {
   const { registeredBets, getRegisteredBets } =

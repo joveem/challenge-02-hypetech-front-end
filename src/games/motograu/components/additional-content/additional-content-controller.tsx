@@ -9,9 +9,14 @@ import { CrashGameContext } from '@/core/providers/games/crash-game.provider'
 // import GameButton from './../../../ components/game-button/game-button'
 import GameButton from './../game-button/game-button'
 
-import BetsList from './bets-list/bets-list'
+// import BetsList from './bets-list/bets-list'
 import HistoryList from './history-list/history-list'
-import Chat from './chat/chat'
+// import Chat from './chat/ORIGINAL-chat'
+import { Chat } from '@/core/components/chat/chat'
+// import { Chat } from '@/core/components/chat/chat'
+// import BetsTab from '@/core/components/transaction-bar/tabs/bets';
+import BetsList from '@/core/components/transaction-bar/tabs/bets/bets-list'
+import HistoryTab from '@/core/components/transaction-bar/tabs/history/history-tab'
 
 type Props = {
   color?: string
@@ -69,17 +74,14 @@ export default function AdditionalContentController (props: Props) {
   return (
     <div className='additional-content-container'>
       <div className='additional-content'>
-        <If condition={_currentPanelName == _betListKey}>
-          <BetsList />
-        </If>
+        <BetsList show={_currentPanelName == _betListKey} />
 
         <If condition={_currentPanelName == _historyListKey}>
-          <HistoryList />
+          {/* <HistoryList /> */}
+          <HistoryTab />
         </If>
 
-        <If condition={_currentPanelName == _chatKey}>
-          <Chat />
-        </If>
+        <Chat show={_currentPanelName == _chatKey} />
       </div>
 
       <div className='content-buttons-container'>

@@ -159,7 +159,10 @@ export default function CrashGameProvider ({
       })
 
       connection.on('game-over', multiplier => {
-        executeAction('crash', { color: 'rgb(52, 180, 255)' })
+        executeAction('crash', {
+          color: 'rgb(52, 180, 255)',
+          lastMultiplierValue: multiplier,
+        })
         setGameStatus(GameStatus.GAME_OVER)
         crashMultiplier.update({
           multiplier: multiplier,
@@ -428,10 +431,18 @@ export default function CrashGameProvider ({
     setTransactions({ ...transactions, [index]: transaction })
 
     console.log(
-      'userId = ' + userId + "\n" +
-      'multiplier = ' + multiplier + "\n" +
-      'socketId = ' + socketId + "\n" +
-      'index = ' + index)
+      'userId = ' +
+        userId +
+        '\n' +
+        'multiplier = ' +
+        multiplier +
+        '\n' +
+        'socketId = ' +
+        socketId +
+        '\n' +
+        'index = ' +
+        index
+    )
   }
 
   return (

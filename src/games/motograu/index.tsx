@@ -9,11 +9,12 @@ import Controls from '@/core/components/controls/crash-control'
 import { CrashGameContext } from '@/core/providers/games/crash-game.provider'
 import { SessionContext } from '@/core/providers/session.provider'
 import { GameStatus } from '@/core/providers/enums/game-status'
-import Navbar from '@/core/components/navbar'
+// import Navbar from '@/core/components/navbar'
+import Header from '@/core/components/navbar/header'
 
 import GameButton from './components/game-button/game-button'
 import AdditionalContentController from './components/additional-content/additional-content-controller'
-import BetPanel from './components/bet-panel/bet-panel'
+import OriginalBetPanel from './components/bet-panel/ORIGINAL-bet-panel'
 
 function HomePage () {
   const { setLoading } = useContext<any>(SessionContext)
@@ -33,25 +34,77 @@ function HomePage () {
 
   return (
     <div className='flex min-h-screen overflow-hidden bg-gradient-to-r motograu-game'>
-      <div className='game-container grow relative z-0'>
+      <div className='grow relative z-0'>
         <iframe
           ref={iframeRef}
           className='rounded-md overflow-hidden w-full h-full pointer-events-none min-h-[250px] sm:min-h-[300px]'
           // src="/motograu/index.html"
           src='/motograu-02/motograu-02.html'
         ></iframe>
+        <div className='transform sm:translate-y-[-390px] translate-y-[-200px]'></div>
       </div>
 
+      {/* <div className='flex w-full sm:gap-3 min-h-screen relative'>
+        <section className='flex flex-col h-full grow p-0'>
+          <div className='' style={{ zIndex: 100 }}>
+            <Header
+              game='motograu'
+              executeAction={executeAction}
+              balance={balance}
+            />
+          </div>
+          <div className='grid p-3 gap-3 grow rounded w-full grid-cols-12'>
+            <div className='col-span-12 sm:col-span-4 grow xl:col-span-3 order-2 sm:order-1'>
+              <TransactionBar />
+            </div>
+
+            <div className='col-span-12 sm:col-span-8 xl:col-span-9 relative order-1 sm:order-1 lg:order-2'>
+              <div className='flex gap-3 h-full flex-col'>
+                <Results />
+                <div className='grow relative z-0'>
+                  <iframe
+                    ref={iframeRef}
+                    className='rounded-md overflow-hidden w-full h-full pointer-events-none min-h-[250px] sm:min-h-[300px]'
+                    // src="/motograu/index.html"
+                    src='/motograu-02/motograu-02.html'
+                  ></iframe>
+                  <div className='transform sm:translate-y-[-390px] translate-y-[-200px]'></div>
+                </div>
+              </div>
+
+              <Snackbar />
+            </div>
+          </div>
+        </section>
+      </div> */}
+
       <div className='game-ui grow absolute z-10'>
+        <Header
+          game='motograu'
+          executeAction={executeAction}
+          balance={balance}
+        />
+        {/* <section className='flex flex-col h-full grow p-0'>
+          <div className='' style={{ zIndex: 100 }}>
+            <Header
+              game='motograu'
+              executeAction={executeAction}
+              balance={balance}
+            />
+          </div>
+        </section> */}
         {/* <TransactionBar /> */}
-        {/* <Navbar
+        {/* <Header
           game="motograu"
           executeAction={executeAction}
           balance={balance}
         /> */}
         <AdditionalContentController />
-        <BetPanel />
+        <Controls color='lime' position={'center'} />
+        {/* <OriginalBetPanel /> */}
         <Results />
+
+        <Snackbar />
       </div>
     </div>
   )

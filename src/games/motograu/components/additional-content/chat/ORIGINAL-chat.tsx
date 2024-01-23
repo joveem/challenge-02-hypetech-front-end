@@ -7,7 +7,7 @@ import { GameStatus } from '@/core/providers/enums/game-status'
 import { CrashGameContext } from '@/core/providers/games/crash-game.provider'
 
 // import GameButton from './../../../ components/game-button/game-button'
-import ChatMessage from './chat-message'
+import ChatMessage from './ORIGINAL-chat-message'
 
 type Props = {
   // color: string

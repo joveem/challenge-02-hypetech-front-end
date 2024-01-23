@@ -736,7 +736,7 @@ class MotoGrauGameScene extends BaseGameScene
     {
         let deltaTime = (delta / 1000);
 
-        let maxVelocity = 20;
+        let maxVelocity = 5;
         let currentVelocityFactor = this.currentVelocityFactor + 0.5;
 
         if (currentVelocityFactor > maxVelocity)
@@ -1281,10 +1281,12 @@ class MotoGrauUIScene extends BaseGameScene
         this.velocemeterContainer.setVisible(false);
     }
 
-    SetMultiplierValue(multiplierValue)
+    SetMultiplierValue(multiplierValue, isLastValue = false)
     {
         this.ShowVelocemeter();
-        this.currentVelocityFactor = multiplierValue;
+
+        if (!this.hasStartedDesceleration || isLastValue)
+            this.currentVelocityFactor = multiplierValue;
 
         this.ApplyMultiplierText(multiplierValue);
         this.SetVelocemeterPositionFactor(multiplierValue / 100);
@@ -1322,7 +1324,7 @@ class MotoGrauUIScene extends BaseGameScene
     {
         let deltaTime = (delta / 1000);
 
-        let maxVelocity = 4;
+        let maxVelocity = 3;
         let currentVelocityFactor = this.currentVelocityFactor;
 
         if (this.hasStartedDesceleration)
@@ -1426,6 +1428,7 @@ class MotoGrauUIScene extends BaseGameScene
 
             // handle velocemeter
             this.ShowVelocemeter();
+            this.SetMultiplierValue(1);
             // handle start countdown
             this.HideStartCountDown();
             this.destinationStartCountdownValue = 10;
@@ -1442,11 +1445,13 @@ class MotoGrauUIScene extends BaseGameScene
 
 
 
-    async DoCrash()
+    async DoCrash(lastMultiplierValue)
     {
         console.log("> DoCrash");
         this.hasStartedDesceleration = true;
         this.hasStartedAcceleration = false;
+
+        this.SetMultiplierValue(lastMultiplierValue, true);
 
         this.ShowDriverFellWarning();
 
@@ -1567,14 +1572,14 @@ function OnUpdateMultiplier(event)
 
 function OnCrash(event)
 {
-    // console.log("#> OnCrash");
-    // console.log(event.detail);
+    console.log("#> OnCrash");
+    console.log(event.detail);
 
     let gameScene = game.scene.getAt(0);
     let uiScene = game.scene.getScene("game-ui-scene")
 
     gameScene.DoCrash();
-    uiScene.DoCrash();
+    uiScene.DoCrash(event.detail.lastMultiplierValue);
 }
 
 function OnTestWheelie(event)
