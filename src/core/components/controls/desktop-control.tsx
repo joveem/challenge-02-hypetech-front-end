@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import CrashForm from './crash/form'
+import BetPanel from './crash/bet-panel'
 import If from '@/core/components/conditions/if'
 
 type Props = {
@@ -11,20 +12,27 @@ export default function DesktopControl({ color }: Props) {
 
   return (
     <div className="hidden w-full gap-3 justify-center flex-wrap md:flex-nowrap md:flex">
-      <CrashForm
+      {/* <CrashForm
+        color={color}
+        secondEnabled={second}
+        toggleSecond={setSecond}
+        position="left"
+      /> */}
+
+      <BetPanel
         color={color}
         secondEnabled={second}
         toggleSecond={setSecond}
         position="left"
       />
 
-      <If condition={second}>
+      {/* <If condition={second}>
         <CrashForm
           color={color}
           hideSelf={setSecond}
           position="right"
         />
-      </If>
+      </If> */}
     </div>
   )
 }

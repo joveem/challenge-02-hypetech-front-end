@@ -1,5 +1,5 @@
 .motograu-game {
-  background: linear-gradient(133deg,#00000017 0%,#1c101d 50%,#462948a2 100%)!important;
+  background: linear-gradient(133deg, #00000017 0%, #1c101d 50%, #462948a2 100%) !important;
 }
 
 .motograu-game .transaction-bar {
@@ -13,10 +13,87 @@
 }
 
 .motograu-game .results-bar {
-  background: linear-gradient(133deg,#00000017 0%,#1c101d 50%,#462948a2 100%)!important;
+  background: linear-gradient(133deg, #00000017 0%, #1c101d 50%, #462948a2 100%) !important;
 }
 
 .motograu-game .chat-container {
-  background: linear-gradient(133deg,#000000 0%,#1c101d 50%,#462948 100%)!important
- }
- 
+  /* background: linear-gradient(133deg, #000000 0%, #1c101d 50%, #462948 100%) !important */
+}
+
+.game-container {}
+
+.game-ui {
+  height: 100%;
+  width: 100%;
+}
+
+.results-list-container {
+  /* left: 0; */
+
+  z-index: 61;
+  bottom: 0;
+
+  position: fixed;
+
+  background-color: #48164e;
+
+  /* background: linear-gradient(133deg,#00000017 0%,#1c101d 50%,#462948a2 100%)!important; */
+}
+
+.results-list-container-open {
+  height: calc(32px * 4 + 2px * 4);
+}
+
+.results-list-container-closed {
+  height: 32px;
+}
+
+.results-list-container .title-container {
+  position: absolute;
+  /* gap: 0px; */
+  left: 28px;
+}
+
+.results-list-container .results-list-items-container {
+  position: absolute;
+  gap: 0px;
+}
+
+.results-list-container .results-list-items-container-closed {
+  left: 28px;
+  margin: 0px 0px 0px 2px;
+}
+
+.results-list-container .results-list-items-container-open {
+  top: 28px;
+  left: 0px;
+
+  background-color: #48164e;
+  border-width: 0px;
+}
+
+.results-list-container .results-list-items-container .results-list-item {
+  height: 28px;
+
+  /* position: absolute; */
+  margin: 2px;
+
+  border-width: 0px;
+  border-radius: 10px;
+
+  background-color: #250b28;
+}
+
+.results-list-container .expand-button {
+  height: 28px;
+  width: 28px;
+
+  position: fixed;
+  left: 0;
+
+  margin: 2px;
+  border-width: 0px;
+  border-radius: 10px;
+
+  background-color: #250b28;
+}

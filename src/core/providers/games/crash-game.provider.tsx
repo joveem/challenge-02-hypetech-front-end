@@ -29,7 +29,7 @@ type Props = {
 
 let firstRun = true
 
-export default function CrashGameProvider({
+export default function CrashGameProvider ({
   connection,
   session,
   children,
@@ -48,7 +48,7 @@ export default function CrashGameProvider({
   )
   const [playerName, setplayerName] = useState<string>('')
 
-  const updateMultiplier = (value) => {
+  const updateMultiplier = value => {
     setMultiplier(value)
   }
 
@@ -90,7 +90,7 @@ export default function CrashGameProvider({
 
   useEffect(() => {
     if (connection) {
-      connection.on('start-timeout', (timeout) => {
+      connection.on('start-timeout', timeout => {
         executeAction('counterTime', { timeOut: timeout })
 
         if (timeout == 0) {
@@ -158,7 +158,7 @@ export default function CrashGameProvider({
         setStartTimeout(10.0)
       })
 
-      connection.on('game-over', (multiplier) => {
+      connection.on('game-over', multiplier => {
         executeAction('crash', { color: 'rgb(52, 180, 255)' })
         setGameStatus(GameStatus.GAME_OVER)
         crashMultiplier.update({
@@ -189,18 +189,20 @@ export default function CrashGameProvider({
         }
       })
 
-      connection.on('update-results', (results) => {
+      connection.on('update-results', results => {
         setResults(results)
       })
 
-      connection.on('update-bets', (bets) => {
+      connection.on('update-bets', bets => {
         setRegisteredBets(bets)
       })
 
-      connection.on('cash-message', (data) => {
+      connection.on('cash-message', data => {
         const { multiplier, amount, index } = data
 
-        let successSound = new Audio('../../../../sounds/successSound.mp3')
+        let successSound = new Audio(
+          '../../../../sounds/successSound.mp3'
+        )
         successSound.play()
 
         const transaction = transactions[index]
@@ -227,14 +229,16 @@ export default function CrashGameProvider({
         })
       })
 
-      connection.on('remove-transaction', (index) => {
+      connection.on('remove-transaction', index => {
         const transaction = transactions[index]
         transaction.status = TransactionStatus.UNREGISTERED
         transaction.autoStarted = false
         setTransactions({ ...transactions, [index]: transaction })
 
         // Reproduza um som de erro
-        let errorSound = new Audio('../../../../sounds/errorSound.mp3')
+        let errorSound = new Audio(
+          '../../../../sounds/errorSound.mp3'
+        )
 
         errorSound.play()
 
@@ -251,26 +255,26 @@ export default function CrashGameProvider({
         setBalance(balance.toString())
       })
 
-      connection.on('update-status', (status) => {
+      connection.on('update-status', status => {
         setGameStatus(status)
       })
 
-      connection.on('round-info', (roundInfo) => {
+      connection.on('round-info', roundInfo => {
         setRoundInfo(roundInfo)
       })
 
       connection.on(
         'registered-transactions',
-        (registeredTransactions) => {
+        registeredTransactions => {
           setRegisteredBets(registeredTransactions)
         }
       )
 
-      connection.on('results-history', (results) => {
+      connection.on('results-history', results => {
         setResults(results)
       })
 
-      connection.on('transaction-history', (betsHistory) => {
+      connection.on('transaction-history', betsHistory => {
         setBetsHistory(betsHistory)
       })
     }
@@ -301,11 +305,11 @@ export default function CrashGameProvider({
     } catch {}
   }
 
-  const getRoundInfo = (roundId) => {
+  const getRoundInfo = roundId => {
     connection.emit('get-round-info', { roundId })
   }
 
-  const sendMessage = (message) => {
+  const sendMessage = message => {
     const { userId } = session
     connection.emit('chat-message', { message, userId })
   }
@@ -323,7 +327,7 @@ export default function CrashGameProvider({
     connection.emit('get-results-history')
   }
 
-  const checkPendingTransactions = (index) => {
+  const checkPendingTransactions = index => {
     if (inAutoMode(index) && transactions[index].autoStarted === true)
       registerTransaction(index)
     else if (
@@ -333,14 +337,14 @@ export default function CrashGameProvider({
     }
   }
 
-  const inAutoMode = (index) => {
+  const inAutoMode = index => {
     return (
       transactions[index].mode == TransactionMode.AUTO &&
       transactions[index].roundCount > 0
     )
   }
 
-  const registerTransaction = (index) => {
+  const registerTransaction = index => {
     const { userId, token, socketId } = session
 
     const transaction = transactions[index]
@@ -372,7 +376,7 @@ export default function CrashGameProvider({
     setTransactions({ ...transactions, [index]: transaction })
   }
 
-  const cancelTransaction = (index) => {
+  const cancelTransaction = index => {
     const transaction = transactions[index]
 
     if (gameStatus == GameStatus.IDLE) {
@@ -395,7 +399,7 @@ export default function CrashGameProvider({
     setTransactions({ ...transactions, [index]: transaction })
   }
 
-  const cashOut = (index) => {
+  const cashOut = index => {
     const { userId, socketId } = session
     const transaction = transactions[index]
 
@@ -422,6 +426,12 @@ export default function CrashGameProvider({
     }
 
     setTransactions({ ...transactions, [index]: transaction })
+
+    console.log(
+      'userId = ' + userId + "\n" +
+      'multiplier = ' + multiplier + "\n" +
+      'socketId = ' + socketId + "\n" +
+      'index = ' + index)
   }
 
   return (
@@ -453,7 +463,7 @@ export default function CrashGameProvider({
         playerName,
         soundEnabled,
         setSoundEnabled,
-        soundClick
+        soundClick,
       }}
     >
       {children}

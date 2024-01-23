@@ -1,0 +1,34 @@
+.additional-content-container {
+  width: 100%;
+  height: 100%;
+}
+
+.additional-content {
+  /* width: 100px;
+  height: 100px; */
+
+  height: calc(100% - 232px);
+  width: 480px;
+
+  position: absolute;
+
+  top: 100px;
+  bottom: 132px;
+  left: 10px;
+}
+
+.content-buttons-container {
+
+  width: 300px;
+  height: 100px;
+
+  bottom: 32px;
+
+  position: fixed;
+  display: flex;
+}
+
+.content-buttons-container .button-container {
+  width: calc(100% / 3);
+  height: 100%;
+}

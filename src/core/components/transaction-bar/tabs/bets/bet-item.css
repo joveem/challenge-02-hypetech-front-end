@@ -1,0 +1,81 @@
+/* .chat-data {
+  padding: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid silver;
+  font-weight: bold;
+} */
+
+.bet-item {
+  border-radius: 8px;
+
+  background-color: #00000088;
+
+  margin: 6px;
+
+  margin-left: 0px;
+  margin-right: 6px;
+
+  padding-bottom: 10px;
+}
+
+/* .bet-item .bet-item-local {
+  background-color: #ffffff88;
+
+  margin-left: 100px;
+  margin-right: 6px;
+} */
+
+.bet-item .sender-name {
+  display: block;
+
+  color: #ffffff55;
+
+  font-size: 14px;
+  /* margin-left: 16px; */
+
+  margin: 0px;
+  padding: 6px 0px 0px 16px;
+}
+
+.bet-item .content-container {
+  /* display: inline; */
+  position: relative;
+}
+
+.bet-item .message-content {
+  display: inline;
+
+  color: #ffffff;
+
+  /* font-weight: bold; */
+  font-size: 20px;
+  line-height: 100%;
+  word-wrap: break-word;
+
+  padding: 0px 8px 8px 8px;
+  /* margin: 80px 80px 80px 80px; */
+}
+
+.bet-item .message-content-win {
+  /* display: inline; */
+
+  color: #00ff00;
+
+  position: absolute;
+
+  right: 0px;
+
+  /* font-weight: bold; */
+  /* font-size: 20px;
+  line-height: 100%;
+  word-wrap: break-word;
+
+  padding: 0px 8px 8px 8px; */
+}
+
+.bet-item .message-content-local {
+  word-wrap: break-word;
+
+  padding: 8px 8px 8px 8px;
+  color: #000000;
+}

@@ -1,0 +1,200 @@
+.preload-01 {
+    height: 0px;
+    width: 0px;
+
+    background: url("/motograu/src/assets/sprites/UI/cb-fec-01-buttons-01-01-pressed-border.png") no-repeat -9999px -9999px;
+}
+
+.game-button {
+    height: 100%;
+    width: 100%;
+
+    position: relative;
+}
+
+.game-button .main-button {
+    height: 100%;
+    width: 100%;
+
+    z-index: 52;
+    position: absolute;
+
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+.game-button .content-container {
+    z-index: 51;
+    /* height: calc(100% - 30px - 42px);
+    width: calc(100% - 30px - 30px); */
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+
+    position: absolute;
+
+    /* padding: 30px 30px 42px 30px; */
+    padding: 24px 30px 42px 30px;
+    margin: 0;
+
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+
+    text-align: center;
+    vertical-align: middle;
+
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+}
+
+.game-button .content-container-pressed {
+    /* padding: 42px 30px 30px 30px; */
+    padding: 36px 30px 30px 30px;
+}
+
+.game-button .content-container .title {
+    width: inherit;
+
+    color: white;
+
+    /* display: flex; */
+    display: inline-flex;
+    /* cursor: pointer; */
+    /* color: green; */
+    align-items: center;
+    justify-content: center;
+}
+
+.game-button .content-container br {
+    height: 0px;
+}
+
+.game-button .content-container .title-01 {}
+
+.game-button .content-container .title-02 {
+    margin: 0px;
+}
+
+.game-button .content-container .icon {
+    /* height: 100%;
+    width: 100%; */
+
+    object-fit: contain;
+    /* width: 100%;
+    height: auto; */
+}
+
+.game-button .border-sprite {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+
+    border-width: 30px 30px 42px 30px;
+    border-image: url("/motograu/src/assets/sprites/UI/cb-fec-01-buttons-01-01-idle-border.png");
+
+    /* filter: hue-rotate(150deg) brightness(160%); */
+
+    background-color: transparent;
+
+    border-image-slice: 30 30 42 30;
+    border-image-repeat: stretch;
+}
+
+.game-button .border-sprite-pressed {
+    border-width: 42px 30px 30px 30px;
+    border-image: url(/motograu/src/assets/sprites/UI/cb-fec-01-buttons-01-01-pressed-border.png);
+
+    border-image-slice: 42 30 30 30;
+}
+
+.game-button .center-sprite {
+    /* height: calc(100% - 30px - 42px);
+    width: calc(100% - 30px - 30px); */
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+
+    position: absolute;
+    z-index: 50;
+
+    /* filter: hue-rotate(150deg) brightness(160%); */
+
+    content: url("/motograu/src/assets/sprites/UI/cb-fec-01-buttons-01-01-idle-center.png");
+
+    /* opacity: 0.5; */
+
+    padding: 30px 30px 42px 30px;
+}
+
+.game-button .center-sprite-pressed {
+    padding: 42px 30px 30px 30px;
+}
+
+/* colors */
+
+.sprite-color-light-red {
+    filter: hue-rotate(0deg) brightness(100%);
+}
+
+.sprite-color-dark-red {
+    filter: hue-rotate(0deg) brightness(60%);
+}
+
+.sprite-color-light-orange {
+    filter: hue-rotate(45deg) brightness(160%);
+}
+
+.sprite-color-dark-orange {
+    filter: hue-rotate(45deg) brightness(100%);
+}
+
+.sprite-color-light-yellow {
+    filter: hue-rotate(66deg) brightness(280%);
+}
+
+.sprite-color-dark-yellow {
+    filter: hue-rotate(66deg) brightness(168%);
+}
+
+.sprite-color-light-green {
+    filter: hue-rotate(150deg) brightness(160%);
+}
+
+.sprite-color-dark-green {
+    filter: hue-rotate(150deg) brightness(100%);
+}
+
+.sprite-color-light-purple {
+    filter: hue-rotate(270deg) brightness(65%);
+}
+
+.sprite-color-dark-purple {
+    filter: hue-rotate(270deg) brightness(40%);
+}
+
+.sprite-color-light-wine {
+    filter: hue-rotate(290deg) brightness(50%);
+}
+
+.sprite-color-dark-wine {
+    filter: hue-rotate(290deg) brightness(25%);
+}
+
+.sprite-color-light-gray {
+    filter: grayscale(100%) brightness(250%);
+}
+
+.sprite-color-dark-gray {
+    filter: grayscale(100%) brightness(120%);
+}
+
+.text-large {
+    margin-top: 8px;
+}

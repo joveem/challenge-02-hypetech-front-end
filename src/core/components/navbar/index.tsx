@@ -18,7 +18,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { getGameLogo, getHowToPlay } from '@/core/helpers'
 import GameLimitsModal from '../provably-fair/game-limits'
-import { Chat } from '../chat'
+import { Chat } from '../chat/chat'
 
 export default function Navbar({
   game,

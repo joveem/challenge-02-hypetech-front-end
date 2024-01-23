@@ -1,0 +1,65 @@
+.bets-list-container {
+  height: 100%;
+  width: 100%;
+
+  border-radius: 22px;
+
+  background-color: #250b28bb;
+}
+
+.bets-list-container .title {
+  font-size: 28px;
+
+  font-weight: bold;
+  text-align: center;
+
+  padding-top: 22px;
+
+  /* color: red; */
+  /* opacity: 1; */
+}
+
+.bets-list-container .bets-container {
+  width: calc(100% - 16px - 16px);
+  height: calc(100% - 28px - 22px - 44px - 20px);
+
+  overflow-y: scroll;
+  flex-direction: column-reverse;
+
+  margin-left: 16px;
+  margin-right: 16px;
+
+  scrollbar-color: #ffffff55 #00000055;
+  scrollbar-width: thin;
+}
+
+.bets-list-container .header-container {
+  width: calc(100% - 18px - 18px);
+  /* background-color: #f1f; */
+
+  position: relative;
+
+  margin-right: 18px;
+  margin-left: 18px;
+
+  transform: translate(0px, -20px);
+}
+
+.bets-list-container .header-container .header-item {
+  display: inline;
+
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.bets-list-container .header-container .users-amount-text {
+  margin-left: 6px;
+
+}
+
+.bets-list-container .header-container .bets-sum-text {
+  /* display: inline; */
+  position: absolute;
+
+  right: 0px;
+}

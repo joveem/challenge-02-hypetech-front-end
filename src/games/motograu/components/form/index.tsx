@@ -38,19 +38,20 @@ export default function CrashForm({
   const [maxAmount, setMaxAmount] = useState(500.0)
 
   const transaction = useSelector(
-    (state) => state.transaction.registered[position]
+    (state :any) => state.transaction.registered[position]
   )
 
-  const handler = useSelector((state) => state.game.handler)
-  const multiplier = useSelector((state) => state.bet.currentOdd)
-  const gameStatus = useSelector((state) => state.game.status)
+  const handler = useSelector((state :any) => state.game.handler)
+  const multiplier = useSelector((state :any) => state.bet.currentOdd)
+  const gameStatus = useSelector((state :any) => state.game.status)
 
   useEffect(() => {
     updateAmount(formatBRLCurrency(1.0))
   }, [])
 
-  function registerTransaction(e) {
-    e.preventDefault()
+  function registerTransaction(e :any) {
+    if(e != null) e.preventDefault()
+
     document
       .getElementById('reactIFrame')
       .contentWindow.dispatchEvent(

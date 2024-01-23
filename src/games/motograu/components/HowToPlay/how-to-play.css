@@ -1,0 +1,21 @@
+.how-to-play-moto-grau-container .content-container {
+
+  width: 100%;
+
+  padding: 20px 20px 42px 20px;
+}
+
+.how-to-play-moto-grau-container .step-image {
+  width: 120%;
+  height: auto;
+}
+
+.how-to-play-moto-grau-container .company-container {
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.how-to-play-moto-grau-container .tutorial-container {
+  margin-top: 20px;
+}
